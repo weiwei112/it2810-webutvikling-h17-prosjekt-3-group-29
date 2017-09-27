@@ -25,6 +25,12 @@ var config = {
       }
     ]
   },
+  devServer: {
+    contentBase: path.join(__dirname,"builddir"),
+    compress: true,
+    port: 9000,
+    open: true
+  },
   plugins : [
       new HtmlWebpackPlugin({
         title: "React App",
