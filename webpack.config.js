@@ -28,6 +28,7 @@ var config = {
   devServer: {
     contentBase: path.join(__dirname,"builddir"),
     compress: true,
+    historyApiFallback: true,
     port: 9000,
     open: true
   },
