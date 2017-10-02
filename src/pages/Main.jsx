@@ -11,7 +11,6 @@ export default class Main extends React.Component {
       <main>
           <Switch>
             <Route exact path='/' component={Activities}/>
-            <Route path='/activities' component={Activities}/>
             <Route path='/todo' component={ToDo}/>
             <Route path='/notes' component={Notes}/>
             <Route path='/documentation' component={Documentation}/>

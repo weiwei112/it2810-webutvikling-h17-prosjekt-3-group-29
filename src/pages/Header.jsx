@@ -9,7 +9,7 @@ export default class Header extends React.Component {
         <nav>
           <ul>
             <li>
-              <NavLink to='/activities' activeClassName='active' exact={true}>
+              <NavLink to='/' activeClassName='active' exact={true}>
                 Activities
               </NavLink>
             </li>

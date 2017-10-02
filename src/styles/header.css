@@ -31,5 +31,5 @@ header nav ul li a{
 }
 
 header nav ul li .active{
-background-color: lightblue;
+  border-bottom: 3px solid red;
 }
