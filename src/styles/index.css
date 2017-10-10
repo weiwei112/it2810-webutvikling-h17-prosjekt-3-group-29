@@ -13,4 +13,16 @@ main {
 
 .content-container{
   padding: 0 20px;
+  width: 100%;
+}
+
+.child-container{
+  padding: 10px 5px;
+  width: 100%;
+}
+
+.flex-wrapper-row{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
