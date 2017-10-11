@@ -1,22 +1,24 @@
-import React from 'react';
+import React, { Component } from 'react';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { Switch, Route } from 'react-router-dom';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
 
+moment.locale('en');
 BigCalendar.momentLocalizer(moment);
 
-class Activities extends React.Component {
+export default class Activities extends Component {
     constructor(props, context) {
       super(props, context);
     }
 
     render() {
       return (
-        <div>
+        <div className='calendar-container'>
           <BigCalendar
-            culture='en-GB'
-            events={this.props.tasks}
-            views={['month', 'week']}/>
+            culture='no'
+            events={[]}
+            views={['month', 'week','day']}/>
         </div>
       );
     }
