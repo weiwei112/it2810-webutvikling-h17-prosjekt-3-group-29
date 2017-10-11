@@ -1,3 +1,33 @@
-.done {
+.todo {
+  cursor: pointer;
+}
+
+.todo-done {
+  cursor: pointer;
   text-decoration: line-through;
+}
+
+.todo-app {
+  width: 100%;
+}
+
+.todo-app .flex-wrapper-row {
+  align-content: flex-end;
+}
+
+.todo-app .text-field {
+  flex-grow: 1;
+}
+
+.todo-app .text-field-input {
+  flex-grow: 1;
+  margin-bottom: auto;
+  margin-top:auto;
+  min-width: 1px;
+}
+
+.todo-app .button{
+  margin-bottom: auto;
+  margin-left: 5px;
+  margin-top: auto;
 }

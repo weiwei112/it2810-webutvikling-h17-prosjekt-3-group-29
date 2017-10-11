@@ -2,8 +2,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  text-decoration: none;
 }
-
 main {
   display: flex;
   margin: auto;
@@ -11,18 +11,72 @@ main {
   width: 100%;
 }
 
+.button {
+  background-color: #f48024;
+  border: none;
+  border-radius: 2px;
+  color: white;
+  display:inline-block;
+  font-size: 12px;
+  max-height: 35px;
+  min-width: 80px;
+  outline: none;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.button:hover {
+  background-color: #f07016;
+  cursor: pointer;
+}
+
+
 .content-container{
   padding: 0 20px;
   width: 100%;
 }
 
 .child-container{
-  padding: 10px 5px;
-  width: 100%;
+  padding: 5px;
 }
-
+.flex-row {
+  display: flex;
+}
 .flex-wrapper-row{
   display:flex;
-  flex-direction: row;
   justify-content: space-between;
+  max-width: 100%;
+}
+
+.text-field {
+  align-items: center;
+  background-color: white;
+  display: flex;
+  font-size: 0.9em;
+  padding: 0;
+  text-align: left;
+  text-decoration: none;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+.text-field-input {
+  align-items: center;
+  background-color: white;
+  border: none;
+  border-bottom: 1px solid grey;
+  display: flex;
+  font-size: 0.7em;
+  height: auto;
+  outline: none;
+  padding: 0;
+  text-align: left;
+  text-decoration: none;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+.icon {
+  margin: auto;
 }
