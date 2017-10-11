@@ -1,11 +1,11 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React, { Component } from 'react';
+import 'react-big-calendar/lib/css/react-big-calendar.css'
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
 
 BigCalendar.momentLocalizer(moment);
 
-class Activities extends React.Component {
+class Activities extends Component {
     constructor(props, context) {
       super(props, context);
     }
