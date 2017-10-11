@@ -16,7 +16,7 @@ export default class Activities extends Component {
       return (
         <div className='calendar-container'>
           <BigCalendar
-            culture='no'
+            culture='en-GB'
             events={[]}
             views={['month', 'week','day']}/>
         </div>
