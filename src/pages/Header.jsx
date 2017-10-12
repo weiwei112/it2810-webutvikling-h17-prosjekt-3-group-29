@@ -3,10 +3,20 @@ import { NavLink } from 'react-router-dom';
 import '../styles/header.css';
 
 export default class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.toggleNav = this.toggleNav.bind(this);
+  }
+
+  toggleNav() {
+    this.nav.classList.toggle('open');
+  }
+
   render() {
     return (
       <header>
-        <nav>
+        <nav ref={(nav) => this.nav = nav}>
+          <div className='icon' onClick={this.toggleNav}>&#9776;</div>
           <ul>
             <li>
               <NavLink to='/' activeClassName='active' exact={true}>
@@ -15,7 +25,7 @@ export default class Header extends React.Component {
             </li>
             <li>
               <NavLink to='/todo' activeClassName='active' exact={true}>
-                To-Do
+                Todo
               </NavLink>
             </li>
             <li>
