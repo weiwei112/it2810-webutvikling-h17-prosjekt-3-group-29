@@ -19,6 +19,7 @@ export default class Activities extends Component {
 				'desc': 'Big conference for important man'
 		}]
     }
+	this.addEvent = this.addEvent.bind(this);
     }
 /*
 componentDidMount() {
@@ -44,17 +45,31 @@ componentDidMount() {
   componentWillUnmount() {
       clearInterval(this.timer);
   }
-
- (
-  slotInfo: {
-    start: Date,
-    end: Date,
-    slots: Array<Date>,
-    action: "select" | "click"
-  }
-) => any
-   */
+ (slotInfo) => alert(
+        `selected slot: ${slotInfo.slots.toLocaleString()} ` +
+		`\n start ${slotInfo.start.toLocaleString()} ` +
+        `\n end: ${slotInfo.end.toLocaleString()}` +
+		`\n action: ${slotInfo.action.toLocaleString()}`
+      )
   
+  
+*/
+addEvent (slotInfo){
+	let prompted = prompt(
+        `selected slot: ${slotInfo.slots.toLocaleString()} ` +
+		`\n start ${slotInfo.start.toLocaleString()} ` +
+        `\n end: ${slotInfo.end.toLocaleString()}` +
+		`\n action: ${slotInfo.action.toLocaleString()}` +
+		`\n \n \n Enter the name of your event:`, `SomeEventName`);
+	const temp = this.state.events;
+	var eventObject = {'title': prompted, 'start': slotInfo.start, 'end':slotInfo.end, 'allDay': true, 'desc':''}
+	temp.push(eventObject);
+	console.log(temp);
+	this.setState({
+		events : temp
+	});
+}
+
 render() {
   return (
 	<div className='calendar-container'>
@@ -63,12 +78,7 @@ render() {
 		events={this.state.events}
 		views={['month', 'week','day']}
 		selectable
-		onSelectSlot= {(slotInfo) => alert(
-        `selected slot: ${slotInfo.slots.toLocaleString()}\n \n
-		start ${slotInfo.start.toLocaleString()} ` +
-        `\n end: ${slotInfo.end.toLocaleString()}` +
-		`\n action: ${slotInfo.action.toLocaleString()}`
-      )}
+		onSelectSlot= {(slotInfo) => this.addEvent(slotInfo)}
 		/>
 	</div>
   );
