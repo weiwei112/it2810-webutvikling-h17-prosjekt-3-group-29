@@ -10,7 +10,14 @@ export default class Activities extends Component {
     constructor(props, context) {
       super(props, context);
 	  this.state={
-		  events:[]
+		  /* Retrieve events from localstorage */
+		  events: localStorage.events ? (json.parse(localstorage.events)) : [{
+				'title': 'Oles party',
+				'allDay': true,
+				'start': new Date(2017, 11, 10),
+				'end': new Date(2017, 11, 13),
+				'desc': 'Big conference for important man'
+		}]
     }
     }
 /*
@@ -53,17 +60,15 @@ render() {
 	<div className='calendar-container'>
 	  <BigCalendar
 		culture='en-GB'
-		events={[{
-				'title': 'Oles party',
-				'allDay': true,
-				/* general format on dates : (year, month, day) */
-				'start': new Date(2017, 0, 10), /* format on start : (year, month, day) day is included in event) Months are 0-indexed */
-				'end': new Date(2017, 0, 11), /* format on dates : (year, month, day ) day is NOT included in event. Months are 0-indexed */
-				'desc': 'Big conference for important man'
-			  }]}
+		events={this.state.events}
 		views={['month', 'week','day']}
 		selectable
-		/* onSelectSlot= */
+		onSelectSlot= {(slotInfo) => alert(
+        `selected slot: ${slotInfo.slots.toLocaleString()}\n \n
+		start ${slotInfo.start.toLocaleString()} ` +
+        `\n end: ${slotInfo.end.toLocaleString()}` +
+		`\n action: ${slotInfo.action.toLocaleString()}`
+      )}
 		/>
 	</div>
   );
