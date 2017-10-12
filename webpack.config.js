@@ -22,6 +22,11 @@ var config = {
         test : /\.css$/,
         include : APP_DIR,
         loader : 'style-loader!css-loader'
+      },
+	  {
+        test : /\.css$/,
+        include : path.resolve(__dirname, 'node_modules'),
+        loader : 'style-loader!css-loader'
       }
     ]
   },

@@ -35,7 +35,10 @@ main {
 .content-container{
   padding: 0 20px;
   width: 100%;
+  height: auto;
 }
+.calendar-container{
+	height: 800px;
 
 .child-container{
   padding: 5px;
