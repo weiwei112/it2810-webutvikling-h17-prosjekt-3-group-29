@@ -1,6 +1,5 @@
 import React from 'react';
-import { PropTypes } from 'prop-types';
-import DeleteNote from './DeleteNote.jsx';
+import {PropTypes} from 'prop-types';
 
 export default class Note extends React.Component {
   constructor(props) {
@@ -10,7 +9,7 @@ export default class Note extends React.Component {
   }
 
   handleEdit() {
-    // TODO
+    this.props.editNote(this.props.note, this.props.index);
   }
 
   handleDelete() {
@@ -18,17 +17,13 @@ export default class Note extends React.Component {
   }
 
   render() {
-    const { note, index } = this.props;
+    const {note, index} = this.props;
     return (
       <div className='content-container'>
         <h3>
-          <div className='noteNum'>
-            {parseInt(index + 1) + '. '}
-          </div>
-          <div className='noteText'>
-            {note}
-          </div>
+          {note}
         </h3>
+        <button onClick={this.handleEdit}>Edit</button>
         <button onClick={this.handleDelete}>Delete</button>
       </div>
     );
@@ -39,5 +34,5 @@ Note.PropTypes = {
   note: PropTypes.string,
   index: PropTypes.int,
   deleteNote: PropTypes.func,
-  editNote: PropTypes.func,
-};
+  editNote: PropTypes.func
+}
