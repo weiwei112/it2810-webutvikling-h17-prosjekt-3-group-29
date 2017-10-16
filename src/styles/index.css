@@ -45,7 +45,6 @@ main {
 }
 .flex-wrapper-row{
   display:flex;
-  justify-content: space-between;
   max-width: 100%;
 }
 
