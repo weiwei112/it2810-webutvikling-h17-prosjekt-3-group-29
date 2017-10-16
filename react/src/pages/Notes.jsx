@@ -1,5 +1,5 @@
 import React from 'react';
-import AddNote from '../components/Notes/AddNote.jsx';
+import AddOrEditNote from '../components/Notes/AddOrEditNote.jsx';
 import NotesList from '../components/Notes/NotesList.jsx';
 
 export default class Notes extends React.Component {
@@ -7,12 +7,14 @@ export default class Notes extends React.Component {
     super(props);
 
     this.state = {
-      notes: localStorage.notes ? JSON.parse(localStorage.notes) : []
+      notes: localStorage.notes ? JSON.parse(localStorage.notes) : [],
+      edit: false
     }
 
     this.addNote = this.addNote.bind(this);
     this.editNote = this.editNote.bind(this);
     this.deleteNote = this.deleteNote.bind(this);
+    this.resetEdit = this.resetEdit.bind(this);
   }
 
   addNote(note, index) {
@@ -23,27 +25,33 @@ export default class Notes extends React.Component {
     :
       notes[index] = note;
 
+    localStorage.tempNote = '';
+    localStorage.notes = JSON.stringify(notes);
+
     this.setState({
       notes: notes
     });
-
-    localStorage.tempNote = '';
-    localStorage.notes = JSON.stringify(notes);
   }
 
-  editNote(index) {
-    // TODO
+  editNote(note, index) {
+    localStorage.tempNote = note;
+    this.deleteNote(index);
+    this.setState({edit: true});
   }
 
   deleteNote(index) {
     let notes = this.state.notes.slice();
     notes.splice(index, 1);
 
+    localStorage.notes = JSON.stringify(notes);
+
     this.setState({
       notes: notes
     });
+  }
 
-    localStorage.notes = JSON.stringify(notes);
+  resetEdit() {
+    this.setState({edit: false});
   }
 
   render() {
@@ -51,12 +59,18 @@ export default class Notes extends React.Component {
     return (
       <div className='content-container'>
         <h1>Notes</h1>
-        <AddNote notes={this.state.notes} addNote={this.addNote} tempNote={tempNote}/>
+        <AddOrEditNote
+          index={this.state.notes.length}
+          edit={this.state.edit}
+          resetEdit={this.resetEdit}
+          addNote={this.addNote}
+          tempNote={tempNote}
+        />
         <NotesList
           notes={this.state.notes}
           editNote={this.editNote}
           deleteNote={this.deleteNote}
-          />
+        />
       </div>
     );
   };
