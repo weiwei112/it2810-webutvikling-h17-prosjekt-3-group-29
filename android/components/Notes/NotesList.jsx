@@ -17,7 +17,7 @@ export default class NotesList extends React.Component {
           editNote={editNote}
           />
           );  
-        })
+        }).reverse()
       }
       </div>
     );
@@ -25,7 +25,7 @@ export default class NotesList extends React.Component {
 }
 
 NotesList.PropTypes = {
-	notes: PropTypes.array,
+  notes: PropTypes.array,
   note: PropTypes.string,
   deleteNote: PropTypes.func,
   editNote: PropTypes.func
