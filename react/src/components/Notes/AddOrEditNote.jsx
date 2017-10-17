@@ -27,8 +27,8 @@ export default class AddOrEditNote extends React.Component {
   render() {
     const {index, addNote, edit, resetEdit} = this.props;
     return this.state.btn || edit ?
-      <div className='content-container'>
-        <button className="clicked" onClick={this.handleClicked}>Add Note</button>
+      <div className='textarea-container'>
+        <button className='note-button' id="clicked-note-button" onClick={this.handleClicked}>Add Note</button>
         <TextArea
           handleButtonClick={this.handleButtonClick}
           index={index}
@@ -38,8 +38,8 @@ export default class AddOrEditNote extends React.Component {
         />
       </div>
     :
-      <div className='content-container'>
-        <button className="unclicked" onClick={this.handleUnclicked}>Add Note</button>
+      <div className='textarea-container'>
+        <button className='note-button' onClick={this.handleUnclicked}>Add Note</button>
       </div>;
   };
 }

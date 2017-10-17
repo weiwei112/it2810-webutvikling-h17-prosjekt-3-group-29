@@ -1,0 +1,57 @@
+button {
+  width: 10%;
+  max-width: 10%;
+}
+
+.textarea-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.button {
+  flex: 1;
+  text-align: center;
+  width: 15%;
+  max-width: 15%;
+  margin-left: 3px;
+}
+
+@media screen and (max-width: 750px) {
+  #note-text-form {
+    display: flex;
+    flex-direction: column;
+  }
+  .button {
+    margin-top: 3px;
+    width: 50%;
+    max-width: 50%;
+  }
+}
+
+.note-button {
+  margin: 0px 3px 5px 3px;
+}
+
+.note {
+  font-size: medium;
+  word-break: break-all;
+  word-wrap: break-word;
+  width: 60%;
+}
+
+#clicked-note-button {
+  background-color: #e07016;
+}
+
+#note-textarea {
+  flex: 2;
+  max-width: 50%;
+  height: 100px;
+  max-height: 100px;
+}
+
+#note-text-form {
+  display: flex;
+}

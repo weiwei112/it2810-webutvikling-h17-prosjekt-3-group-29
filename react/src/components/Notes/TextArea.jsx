@@ -51,10 +51,10 @@ export default class TextArea extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} onReset={this.handleReset} className='child-container flex-wrapper-row'>
-        <textarea value={this.state.value} onChange={this.handleChange}/>
-        <input type="submit" value="Save"/>
-        <input type="reset" value={this.props.edit ? 'Discard changes' : 'Discard'}/>
+      <form onSubmit={this.handleSubmit} onReset={this.handleReset} className='flex-wrapper-row' id='note-text-form'>
+        <textarea id="note-textarea" value={this.state.value} onChange={this.handleChange} placeholder='Your notes here...'/>
+        <input className="button" type="submit" value="Save"/>
+        <input className="button" type="reset" value={this.props.edit ? 'Discard changes' : 'Discard'}/>
       </form>
     );
   }
