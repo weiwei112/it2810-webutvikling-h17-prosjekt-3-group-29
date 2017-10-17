@@ -36,7 +36,7 @@ addEvent (slotInfo){
         `\n end: ${slotInfo.end.toLocaleString()}` +
 		`\n action: ${slotInfo.action.toLocaleString()}` +
 		`\n \n \n Enter the name of your event:`, ``);
-	if (prompted != ""){
+	if (prompted != undefined){
 		const temp = this.state.events;
 		var eventObject = {'title': prompted, 'start': slotInfo.start, 'end':slotInfo.end, 'allDay': true, 'desc':''}
 		temp.push(eventObject);
