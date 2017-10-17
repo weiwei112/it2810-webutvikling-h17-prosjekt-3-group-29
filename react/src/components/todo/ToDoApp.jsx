@@ -6,10 +6,9 @@ export default class ToDoApp extends React.Component {
   constructor(props) {
     super(props);
 
-    // State
     this.state = {
       editing: -1,
-      todos: localStorage.todos ? JSON.parse(localStorage.todos) : [],
+      todos: localStorage.todos ? JSON.parse(localStorage.todos) : []
     };
 
     // Bindings
