@@ -1,6 +1,7 @@
 import React from 'react';
 import AddOrEditNote from '../components/Notes/AddOrEditNote.jsx';
 import NotesList from '../components/Notes/NotesList.jsx';
+import '../styles/notes.css';
 
 export default class Notes extends React.Component {
   constructor(props) {

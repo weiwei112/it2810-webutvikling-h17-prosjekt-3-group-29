@@ -6,7 +6,7 @@ export default class NotesList extends React.Component {
   render() {
     const {notes, deleteNote, editNote} = this.props;
     return (
-      <div className='content-container'>
+      <div>
       {notes.map((note, i) => {
         return (
           <Note

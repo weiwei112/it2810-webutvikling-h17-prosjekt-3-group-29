@@ -4,6 +4,7 @@ body {
   font-family: sans-serif;
   text-decoration: none;
 }
+
 main {
   display: flex;
   margin: auto;
@@ -11,7 +12,7 @@ main {
   width: 100%;
 }
 
-.button {
+button, .button {
   background-color: #f48024;
   border: none;
   border-radius: 2px;
@@ -26,7 +27,7 @@ main {
   text-decoration: none;
 }
 
-.button:hover {
+button:hover, .button:hover {
   background-color: #f07016;
   cursor: pointer;
 }
@@ -47,7 +48,7 @@ main {
   display: flex;
 }
 .flex-wrapper-row{
-  display:flex;
+  display: flex;
   max-width: 100%;
 }
 

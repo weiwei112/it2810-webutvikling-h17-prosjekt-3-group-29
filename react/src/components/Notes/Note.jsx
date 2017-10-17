@@ -19,12 +19,12 @@ export default class Note extends React.Component {
   render() {
     const {note, index} = this.props;
     return (
-      <div className='content-container'>
-        <h3>
+      <div>
+        <h3 className='note'>
           {note}
         </h3>
-        <button onClick={this.handleEdit}>Edit</button>
-        <button onClick={this.handleDelete}>Delete</button>
+        <button className='note-button' onClick={this.handleEdit}>Edit</button>
+        <button className='note-button' onClick={this.handleDelete}>Delete</button>
       </div>
     );
   };
