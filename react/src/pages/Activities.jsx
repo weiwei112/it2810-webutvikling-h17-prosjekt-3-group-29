@@ -10,60 +10,69 @@ export default class Activities extends Component {
     constructor(props, context) {
       super(props, context);
 	  this.state={
-		  events:[]
+		  /* Retrieve events from localstorage */
+		  events: localStorage.Events ? (JSON.parse(localStorage.Events)) : []
     }
+	this.addEvent = this.addEvent.bind(this);
+	this.deleteEvent = this.deleteEvent.bind(this);
+	this.findEvent = this.findEvent.bind(this);
     }
-/*
-componentDidMount() {
-    const events_const = JSON.parse(localStorage.getItem('events'));
-    console.log("Events are: " + events_const);
-	var array =[]
-	var 
-	for (i=0,i<events_const.length;i++){
-		array.push(events_const[i]);
-		}
-	var events_array = Array(events_const.split(,));
-    this.setState({
-      events: array||[]
-    });
-    const _this = this;
-    this.timer = setInterval(function() {
-      _this.setState({
-        events: _this.state.events
-      })
-      localStorage.setItem('events',JSON.stringify(_this.state.events))
-    },10000)
-  }
-  componentWillUnmount() {
-      clearInterval(this.timer);
-  }
+findEvent(obj, label) {
+	var temp = [];
+    for(var i in obj){
+        if(obj.hasOwnProperty(i)){
+			if (obj[i].title === label){ continue;}
+			else{
+				temp.push(obj[i]);}
+        }
+    }
+    return temp;
+}
 
- (
-  slotInfo: {
-    start: Date,
-    end: Date,
-    slots: Array<Date>,
-    action: "select" | "click"
-  }
-) => any
-   */
-  
+addEvent (slotInfo){
+	let prompted = prompt(
+        `selected slot: ${slotInfo.slots.toLocaleString()} ` +
+		`\n start ${slotInfo.start.toLocaleString()} ` +
+        `\n end: ${slotInfo.end.toLocaleString()}` +
+		`\n action: ${slotInfo.action.toLocaleString()}` +
+		`\n \n \n Enter the name of your event:`, ``);
+	if (prompted != ""){
+		const temp = this.state.events;
+		var eventObject = {'title': prompted, 'start': slotInfo.start, 'end':slotInfo.end, 'allDay': true, 'desc':''}
+		temp.push(eventObject);
+		this.setState({
+			events : temp
+		});
+		localStorage.Events = JSON.stringify(temp);
+		}
+}
+
+deleteEvent(selected){
+	let comfirmed = confirm(
+		`Are you sure you want to delete this event? \n`+
+		`Selected events name is: ${selected.title.toLocaleString()} `
+		);
+	const temp = this.state.events;
+	console.log("This is the object: " + temp.toString());
+	var tempNew = this.findEvent(temp, selected.title);
+/* 	var tempNew = temp.collectedItems.filter(function(currentObjects){
+		return currentObjects.title !== entityObj[selected.title];}); */
+	this.setState({
+	events : tempNew
+	});
+	localStorage.Events = JSON.stringify(tempNew);
+	}
 render() {
   return (
 	<div className='calendar-container'>
 	  <BigCalendar
 		culture='en-GB'
-		events={[{
-				'title': 'Oles party',
-				'allDay': true,
-				/* general format on dates : (year, month, day) */
-				'start': new Date(2017, 0, 10), /* format on start : (year, month, day) day is included in event) Months are 0-indexed */
-				'end': new Date(2017, 0, 11), /* format on dates : (year, month, day ) day is NOT included in event. Months are 0-indexed */
-				'desc': 'Big conference for important man'
-			  }]}
+		events={this.state.events}
 		views={['month', 'week','day']}
 		selectable
-		/* onSelectSlot= */
+		onSelectSlot= {(slotInfo) => this.addEvent(slotInfo)}
+		onSelectEvent = {(selected) => this.deleteEvent(selected)}
+		/* selected = {(selected) => this.deleteEvent(selected)} */
 		/>
 	</div>
   );
