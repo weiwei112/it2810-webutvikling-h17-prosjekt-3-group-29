@@ -34,13 +34,11 @@
     "servebuild": "webpack -p && node server.js",
     "test": "jest"
   },
-  "jest":{
-
+  "jest": {
     "moduleNameMapper": {
       "\\.(css|less)$": "<rootDir>/src/pages/styleMock.js"
     }
   },
-
   "keywords": [],
   "author": "",
   "license": "ISC"
