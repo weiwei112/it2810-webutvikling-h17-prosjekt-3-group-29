@@ -4,6 +4,7 @@
   "description": "Project 3 - IT2810",
   "main": "index.js",
   "dependencies": {
+    "jest-enzyme": "^4.0.1",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
@@ -22,12 +23,15 @@
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.8.2"
   },
+  "devDependencies": {
+    "jest": "^21.2.1"
+  },
   "scripts": {
     "dev": "webpack-dev-server",
     "start": "webpack -d --watch",
     "serve": "node server.js",
     "build": "webpack -p",
     "servebuild": "webpack -p && node server.js",
-    "test": ""
+    "test": "jest"
   }
 }
