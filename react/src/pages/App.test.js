@@ -1,45 +1,41 @@
 import React from 'react';
-import {shallow, mount, render} from 'enzyme';
-import {expect} from 'chai';
-import App from '../App';
-import  Header  from './Header;
+import Enzyme, {shallow, mount, render} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-15';
+import App from './App';
+import Header from './Header';
 
 import sinon from 'sinon';
-import { expect } from 'chai';
 
+Enzyme.configure({ adapter: new Adapter() });
 
 
 describe('App', () => {
     it('renders without crashing', () => {
-        const div = document.createElement('div');
-        ReactDOM.render(<App/>, div);
+        const app = shallow(<App/>);
+        expect(app.exists());
     });
 });
-
 
 
 describe('Header ', () => {
-it('should render Header without crashing', () => {
-        const div = document.createElement('div');
-       ReactDOM.render(<Header />, div);
+    const head = shallow(<Header/>);
+    it('renders without crashing', () => {
+        expect(head.exists());
     });
 
-   it('should render four nav_link', () => {
-        const wrapper = shallow(<Header />);
-        expect(wrapper.find('.active')).to.have.length(4);
+    it('contains "icon" div', () => {
+        expect(head.find('icon').exists());
+    });
+
+    it('contains <Navlink>', () => {
+        expect(head.find('NavLink').exists());
+    });
+
+    it('contains 4 NavLink elements', () => {
+        expect(head.find('li').children()).to.have.length(4);
+    });
+
+    it('doesn\'t contain 5 NavLink elements', () => {
+        expect(head.find('li').children()).to.not.have.length(5);
     });
 });
-
-
-
-it('simulates click events', () => {
-  const onButtonClick = sinon.spy()
-  const wrapper = shallow(
-    < onButtonClick={onButtonClick} />
-  )
-  wrapper.find('button').simulate('click')
-  expect(onButtonClick.calledOnce).to.be.true
-})
-
-
-
