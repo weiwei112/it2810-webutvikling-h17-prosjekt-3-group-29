@@ -24,6 +24,8 @@
     "webpack-dev-server": "^2.8.2"
   },
   "devDependencies": {
+    "enzyme": "^3.1.0",
+    "enzyme-adapter-react-15": "^1.0.2",
     "jest": "^21.2.1"
   },
   "scripts": {
@@ -34,13 +36,11 @@
     "servebuild": "webpack -p && node server.js",
     "test": "jest"
   },
-  "jest":{
-
+  "jest": {
     "moduleNameMapper": {
       "\\.(css|less)$": "<rootDir>/src/pages/styleMock.js"
     }
   },
-
   "keywords": [],
   "author": "",
   "license": "ISC"

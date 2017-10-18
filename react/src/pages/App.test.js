@@ -3,8 +3,13 @@ import Enzyme, {shallow, mount, render} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-15';
 import App from './App';
 import Header from './Header';
-
 import sinon from 'sinon';
+import ToDoCreator from '../components/todo/ToDoCreator';
+import ToDoEditor from '../components/todo/ToDoEditor';
+
+import {expect} from 'chai';
+
+
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -37,5 +42,39 @@ describe('Header ', () => {
 
     it('doesn\'t contain 5 NavLink elements', () => {
         expect(head.find('li').children()).to.not.have.length(5);
+    });
+});
+
+
+//a//
+const setup = () => {
+  const props = {
+    onAddClick: jest.fn()
+  }
+
+  const wrapper = shallow(<ToDoCreator {...props} />)
+  return {
+    props,
+    wrapper
+  }
+}
+
+describe('ToDoCreator', () => {
+  const { wrapper, props } = setup();
+
+  it('ToDoCeator Component should be render', () => {
+    expect(wrapper.find('input').exists());
+  })
+
+     it('ToDoCeator Component contain button', () => {
+    expect(wrapper.find('button').exists());
+  })
+})
+
+
+describe('ToDoEditor ', () => {
+    const todoeditor = shallow(<Header/>);
+    it('ToDoEditor Component should be render', () => {
+        expect(todoeditor.exists());
     });
 });
