@@ -1,7 +1,6 @@
 import React from 'react';
 import Enzyme, {shallow, mount, render} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-15';
-import sinon from 'sinon';
 import {expect} from 'chai';
 
 // Import Components
@@ -16,6 +15,12 @@ import TextArea from '../components/Notes/TextArea';
 global.window = {};
 import localStorage from 'mock-local-storage';
 window.localStorage = global.localStorage;
+
+import ToDoCreator from '../components/todo/ToDoCreator';
+import ToDoEditor from '../components/todo/ToDoEditor';
+import ToDoList from '../components/todo/ToDoList';
+import ToDoApp from '../components/todo/ToDoApp';
+import ToDoItem from '../components/todo/ToDoItem';
 
 // Configure Enzyme to use react-15.x
 Enzyme.configure({ adapter: new Adapter() });
@@ -126,3 +131,55 @@ describe('TextArea', () => {
         expect(area.exists());
     });
 });
+
+
+//a//
+const setup = () => {
+  const props = {
+    onAddClick: jest.fn()
+  }
+
+  const wrapper = shallow(<ToDoCreator {...props} />)
+  return {
+    props,
+    wrapper
+  }
+}
+
+describe('ToDoCreator', () => {
+  const { wrapper, props } = setup();
+
+  it('ToDoCeator Component should be render', () => {
+    expect(wrapper.find('input').exists());
+  })
+
+     it('ToDoCeator Component contain button', () => {
+    expect(wrapper.find('button').exists());
+  })
+})
+
+
+
+describe('ToDoList', () => {
+    let items = ["Hey!", "Ho!"];
+    const todolist = shallow(<ToDoList todos={items}/>);
+    it('ToDoList Component should be render', () => {
+        expect(todolist.exists());
+    });
+});
+
+describe('ToDoApp ', () => {
+    const todoapp = shallow(<ToDoApp/>);
+    it('ToDoApp Component should be render', () => {
+        expect(todoapp.exists());
+    });
+});
+
+describe('ToDoItem ', () => {
+    let item = {description:"This is the description", status:true};
+    const todoitem = shallow(<ToDoItem todo={item} index={0}/>);
+    it('ToDoItem Component should be render', () => {
+        expect(todoitem.exists());
+    });
+});
+
