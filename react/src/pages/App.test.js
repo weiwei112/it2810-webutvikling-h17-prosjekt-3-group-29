@@ -6,10 +6,10 @@ import Header from './Header';
 import sinon from 'sinon';
 import ToDoCreator from '../components/todo/ToDoCreator';
 import ToDoEditor from '../components/todo/ToDoEditor';
-
+import ToDoList from '../components/todo/ToDoList';
+import ToDoApp from '../components/todo/ToDoApp';
+import ToDoItem from '../components/todo/ToDoItem';
 import {expect} from 'chai';
-
-
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -73,8 +73,34 @@ describe('ToDoCreator', () => {
 
 
 describe('ToDoEditor ', () => {
-    const todoeditor = shallow(<Header/>);
+    const todoeditor = shallow(<ToDoEditor/>);
     it('ToDoEditor Component should be render', () => {
         expect(todoeditor.exists());
     });
+    it('Test button ', () => {
+        todoeditor.find('a').simulate('click', { preventDefault() {} });
+
+    });
 });
+
+describe('ToDoList ', () => {
+    const todolist = shallow(<ToDoList/>);
+    it('ToDoList Component should be render', () => {
+        expect(todolist.exists());
+    });
+});
+
+describe('ToDoApp ', () => {
+    const todoapp = shallow(<ToDoApp/>);
+    it('ToDoApp Component should be render', () => {
+        expect(todoapp.exists());
+    });
+});
+
+describe('ToDoItem ', () => {
+    const todoitem = shallow(<ToDoItem/>);
+    it('ToDoApp Component should be render', () => {
+        expect(todoitem.exists());
+    });
+});
+
